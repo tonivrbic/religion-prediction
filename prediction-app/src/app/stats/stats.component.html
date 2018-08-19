@@ -1,0 +1,61 @@
+<h1>World countries statistics</h1>
+<div class="cards-container">
+  <mat-card class="card">
+
+      <mat-card-title>No. of countries by religion</mat-card-title>
+
+    <div style="display: block">
+      <canvas baseChart
+        [colors]="colors"
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [legend]="barChartLegend"
+        [chartType]="barChartType">
+      </canvas>
+    </div>
+  </mat-card>
+  <mat-card class="card">
+
+      <mat-card-title>No. of countries by continent</mat-card-title>
+
+    <div style="display: block">
+      <canvas baseChart
+        [colors]="colors"
+        [datasets]="countriesByContinent"
+        [labels]="continents"
+        [options]="barChartOptions"
+        [legend]="barChartLegend"
+        [chartType]="barChartType">
+      </canvas>
+    </div>
+  </mat-card>
+  <mat-card class="card">
+      <mat-card-title>No. of flags with a color</mat-card-title>
+    <div style="display: block">
+      <canvas baseChart
+        [colors]="canvasFlagColors"
+        [datasets]="colorsInFlags"
+        [labels]="flagColors"
+        [options]="barChartOptions"
+        [legend]="barChartLegend"
+        [chartType]="barChartType">
+      </canvas>
+    </div>
+  </mat-card>
+  <mat-card class="card">
+
+      <mat-card-title>No. of flags by mainhue</mat-card-title>
+
+    <div style="display: block">
+      <canvas baseChart
+        [colors]="canvasMainhues"
+        [datasets]="mainhueOfFlags"
+        [labels]="mainhues"
+        [options]="barChartOptions"
+        [legend]="barChartLegend"
+        [chartType]="barChartType">
+      </canvas>
+    </div>
+  </mat-card>
+</div>

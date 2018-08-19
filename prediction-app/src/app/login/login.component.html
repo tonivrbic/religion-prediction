@@ -1,0 +1,63 @@
+<div class="login">
+  <div class="login__overlay"></div>
+  <mat-tab-group class="login__box">
+    <mat-tab label="Login">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <h1>Login</h1>
+          </mat-card-title>
+          <mat-card-subtitle>You must be logged in to use the application</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <form class="login__form" (ngSubmit)="loginAccount(loginEmail,loginPassword)" name="loginForm">
+            <p class="login__error">{{loginErrorMessage}}</p>
+            <div>
+              <mat-form-field class="login__input">
+                <input matInput placeholder="Email" type="email" [(ngModel)]="loginEmail" name="email">
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field class="login__input">
+                <input matInput placeholder="Password" type="password" [(ngModel)]="loginPassword" name="password">
+              </mat-form-field>
+            </div>
+            <button mat-raised-button color="primary">LOG IN</button>
+          </form>
+          <mat-divider></mat-divider>
+          <p class="login__divider">Or log in with a third party service</p>
+          <div class="login__buttons">
+            <button class="google-login-button" mat-button (click)="loginWithGoogle()">Log in with Google</button>
+            <button class="facebook-login-button" mat-button (click)="loginWithFacebook()">Log in with Facebook</button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-tab>
+    <mat-tab label="Register">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <h1>Register</h1>
+          </mat-card-title>
+          <mat-card-subtitle>Create an account to use the application.</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="login__error">{{registerErrorMessage}}</p>
+          <form (ngSubmit)="registerAccount(registerEmail,registerPassword)" name="registerForm">
+            <div>
+              <mat-form-field class="login__input">
+                <input matInput placeholder="Email" type="email" [(ngModel)]="registerEmail" name="email">
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field class="login__input">
+                <input matInput placeholder="Password" type="password" [(ngModel)]="registerPassword" name="password">
+              </mat-form-field>
+            </div>
+            <button mat-raised-button color="primary">REGISTER</button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </mat-tab>
+  </mat-tab-group>
+</div>

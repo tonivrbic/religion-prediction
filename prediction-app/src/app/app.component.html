@@ -1,0 +1,39 @@
+<!-- <app-sidenav></app-sidenav> -->
+<mat-toolbar color="primary" class="toolbar__wrapper">
+  <div class="toolbar">
+    <div class="toolbar__title">
+      <button class="toolbar__button" mat-icon-button *ngIf="!isRouteActive('')" (click)="goBack()"><mat-icon>arrow_back</mat-icon></button>
+      <span>Religion prediction</span>
+    </div>
+    <div class="toolbar__account">
+      <span class="toolbar__name">{{(user | async)?.displayName || (user | async)?.email}}</span>
+      <button mat-icon-button [matMenuTriggerFor]="logoutMenu" *ngIf="(user | async)?.uid">
+        <img [src]="(user | async)?.photoURL || 'assets/user_avatar.png'" height="32" class="toolbar__avatar">
+      </button>
+    </div>
+  </div>
+</mat-toolbar>
+<div class="router-content">
+  <nav mat-tab-nav-bar backgroundColor="primary" color="accent">
+    <a mat-tab-link
+        *ngFor="let link of navLinks"
+        [routerLink]="link.path"
+        routerLinkActive #rla="routerLinkActive"
+        [active]="rla.isActive">
+      <mat-icon>{{link.icon}}</mat-icon>
+      <span class="tab__label">{{link.label}}</span>
+    </a>
+  </nav>
+  <router-outlet></router-outlet>
+</div>
+
+<mat-menu #logoutMenu [overlapTrigger]="false">
+  <span mat-menu-item>
+      <mat-icon>account_circle</mat-icon>{{(user | async)?.displayName || (user | async)?.email}}
+    </span>
+  <a mat-menu-item routerLink="about">
+    <mat-icon>info</mat-icon>About
+  </a>
+  <mat-divider></mat-divider>
+  <button mat-menu-item (click)="logout()"><mat-icon>exit_to_app</mat-icon>Log out</button>
+</mat-menu>

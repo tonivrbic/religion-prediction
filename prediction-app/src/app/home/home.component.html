@@ -1,0 +1,11 @@
+{{data | json}}
+<button mat-raised-button
+  (click)="callApi()"
+  color="accent">Call API</button>
+
+<mat-list>
+  <mat-list-item *ngFor="let item of data">
+    <!-- <span matLine><strong>{{item.label}}: </strong>{{item.value}}</span> -->
+  </mat-list-item>
+</mat-list>
+
