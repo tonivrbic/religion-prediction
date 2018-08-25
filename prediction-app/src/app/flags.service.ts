@@ -7,7 +7,11 @@ import { HttpClient } from '@angular/common/http';
 export class FlagsService {
   constructor(private http: HttpClient) {}
 
-  detectReligion() {
-    return this.http.get('http://localhost:61629/api/Flags');
+  detectReligion(name: string, prediction: any) {
+    console.log(prediction);
+    return this.http.post(
+      `https://localhost:44303/api/Flags?name=${name}`,
+      prediction
+    );
   }
 }

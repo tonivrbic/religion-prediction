@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { StatsComponent } from './stats/stats.component';
+import { PredictComponent } from './predict/predict.component';
 
 const routes: Routes = [
   {
@@ -14,13 +15,17 @@ const routes: Routes = [
     component: StatsComponent
   },
   {
-    component: HomeComponent,
-    path: 'home'
+    path: 'predict',
+    component: PredictComponent
   },
   {
-    path: '**',
-    redirectTo: 'stats'
+    component: HomeComponent,
+    path: 'home'
   }
+  // {
+  //   path: '**',
+  //   redirectTo: 'home'
+  // }
 ];
 
 @NgModule({

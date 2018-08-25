@@ -46,7 +46,10 @@
 .router-content {
   margin-top: 4em;
 }
-
+.tab.mat-tab-label-active {
+  color: #fff;
+  opacity: 1;
+}
 .tab__label {
   margin-left: 0.5em;
 }

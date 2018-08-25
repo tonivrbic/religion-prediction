@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27703.2042
+VisualStudioVersion = 15.0.28010.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlagsApi", "FlagsApi\FlagsApi.csproj", "{C5AF0F81-F468-4836-B101-9D125EE2D93F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlagsApi", "FlagsApi\FlagsApi.csproj", "{627A5E95-0DAA-41D0-BD2C-11027877C3E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C5AF0F81-F468-4836-B101-9D125EE2D93F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C5AF0F81-F468-4836-B101-9D125EE2D93F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C5AF0F81-F468-4836-B101-9D125EE2D93F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C5AF0F81-F468-4836-B101-9D125EE2D93F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{627A5E95-0DAA-41D0-BD2C-11027877C3E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{627A5E95-0DAA-41D0-BD2C-11027877C3E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{627A5E95-0DAA-41D0-BD2C-11027877C3E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{627A5E95-0DAA-41D0-BD2C-11027877C3E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {5FCB256F-6D97-4FD4-8489-E03858828D17}
+		SolutionGuid = {2DBA2B84-878E-4C23-8963-568A39BD598F}
 	EndGlobalSection
 EndGlobal

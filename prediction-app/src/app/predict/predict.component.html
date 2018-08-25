@@ -1,0 +1,60 @@
+{{data | json}}
+<mat-card>
+  <h1>Predict religion based on flag features</h1>
+  <mat-form-field  class="name-input">
+    <input type="text" matInput placeholder="Name of prediction" [(ngModel)]="name">
+  </mat-form-field>
+</mat-card>
+<form [formGroup]="formGroup">
+  <mat-card class="form-group">
+    <mat-card-header>
+      <mat-card-title>Number of features</mat-card-title>
+    </mat-card-header>
+    <span class="form-group__item" *ngFor="let item of numberedTypes">
+      <mat-form-field>
+        <input type="number" matInput [placeholder]="item" [formControl]="formGroup.controls[item]">
+      </mat-form-field>
+    </span>
+  </mat-card>
+  <!-- <mat-divider></mat-divider> -->
+  <mat-card class="form-group">
+    <mat-card-header>
+      <mat-card-title>Things a flag has</mat-card-title>
+    </mat-card-header>
+    <span class="form-group__item" *ngFor="let item of checkboxFeatures">
+      <mat-checkbox [formControl]="formGroup.controls[item]">{{item}}</mat-checkbox>
+    </span>
+  </mat-card>
+  <!-- <mat-divider></mat-divider> -->
+  <mat-card class="form-group">
+    <mat-card-header>
+      <mat-card-title>Colors in flag</mat-card-title>
+    </mat-card-header>
+    <span class="form-group__item" *ngFor="let item of checkboxColors">
+      <mat-checkbox [formControl]="formGroup.controls[item]">{{item}}</mat-checkbox>
+    </span>
+  </mat-card>
+  <!-- <mat-divider></mat-divider> -->
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Colors at some position in flag</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <span class="form-group__item" *ngFor="let item of selectColors">
+        <mat-form-field>
+          <mat-select [placeholder]="item" [formControl]="formGroup.controls[item]">
+            <mat-option *ngFor="let color of flagColors" [value]="color">{{color}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </span>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button
+        (click)="callApi()"
+        color="accent">
+        Predict religion
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>
+

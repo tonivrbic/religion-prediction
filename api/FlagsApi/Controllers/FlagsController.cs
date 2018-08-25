@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using QuickType;
+
 
 namespace FlagsApi.Controllers
 {
@@ -16,21 +18,90 @@ namespace FlagsApi.Controllers
     public class FlagsController : Controller
     {
         // POST: api/Flags
-        [HttpGet]
-        public async Task<ActionResult> DetectReligion()
+        [HttpPost]
+        public async Task<ActionResult> DetectReligion(string name, [FromBody] Prediction prediction)
         {
             using (var client = new HttpClient())
             {
                 var scoreRequest = new
                 {
-
-                    Inputs = new Dictionary<string, StringTable>() {
+                    Inputs = new Dictionary<string, List<Dictionary<string, string>>>() {
                         {
                             "input1",
-                            new StringTable()
-                            {
-                                ColumnNames = new string[] {"religion", "crosses", "mainhue-blue", "white", "botright-green", "blue", "botright-blue", "quarters", "topleft-red", "saltires", "topleft-gold", "green", "circles", "red", "stripes", "topleft-white", "mainhue-green", "topleft-blue", "mainhue-red", "botright-orange", "sunstars"},
-                                Values = new string[,] {  { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" },  { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" },  }
+                            new List<Dictionary<string, string>>(){new Dictionary<string, string>(){
+                                            {
+                                                "religion", prediction.Religion
+                                            },
+                                            {
+                                                "bars", prediction.Bars
+                                            },
+                                            {
+                                                "stripes", prediction.Stripes
+                                            },
+                                            {
+                                                "colours", prediction.Colours
+                                            },
+                                            {
+                                                "red", prediction.Red.ToString()
+                                            },
+                                            {
+                                                "green", prediction.Green.ToString()
+                                            },
+                                            {
+                                                "blue", prediction.Blue.ToString()
+                                            },
+                                            {
+                                                "gold", prediction.Gold.ToString()
+                                            },
+                                            {
+                                                "white", prediction.White.ToString()
+                                            },
+                                            {
+                                                "black", prediction.Black.ToString()
+                                            },
+                                            {
+                                                "orange", prediction.Orange.ToString()
+                                            },
+                                            {
+                                                "mainhue", prediction.Mainhue
+                                            },
+                                            {
+                                                "circles", prediction.Circles
+                                            },
+                                            {
+                                                "crosses", prediction.Crosses
+                                            },
+                                            {
+                                                "saltires", prediction.Saltires
+                                            },
+                                            {
+                                                "quarters", prediction.Quarters
+                                            },
+                                            {
+                                                "sunstars", prediction.Sunstars
+                                            },
+                                            {
+                                                "crescent", prediction.Crescent.ToString()
+                                            },
+                                            {
+                                                "triangle", prediction.Triangle.ToString()
+                                            },
+                                            {
+                                                "icon", prediction.Icon.ToString()
+                                            },
+                                            {
+                                                "animate", prediction.Animate.ToString()
+                                            },
+                                            {
+                                                "text", prediction.Text.ToString()
+                                            },
+                                            {
+                                                "topleft", prediction.Topleft
+                                            },
+                                            {
+                                                "botright", prediction.Botright
+                                            },
+                                }
                             }
                         },
                     },
@@ -38,10 +109,10 @@ namespace FlagsApi.Controllers
                     {
                     }
                 };
-                const string apiKey = "E25I29g3ENARZoRALbP3msGPQnQHpbpI6BjhuBLNznlscmkvmq+wRGKfA8xsnzJzdqOnvehBKU7qVL8GLyLr+A=="; // Replace this with the API key for the web service
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
 
-                client.BaseAddress = new Uri("https://ussouthcentral.services.azureml.net/workspaces/e797c3fe4feb442592cc171d725d7b01/services/9b7db248c026431da562464f78b80850/execute?api-version=2.0&details=true");
+                const string apiKey = "4ApHMne27lXeQB5HIx79llERzzzv2y77mSHqTIm5w+AIqP29sgL3obJodM3lzcVeS9+uyxt9rvCVhVP0+xQCgA=="; // Replace this with the API key for the web service
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
+                client.BaseAddress = new Uri("https://ussouthcentral.services.azureml.net/workspaces/e797c3fe4feb442592cc171d725d7b01/services/e6704ff7427b44658cb09aa750b6ba45/execute?api-version=2.0&format=swagger");
 
                 // WARNING: The 'await' statement below can result in a deadlock if you are calling this code from the UI thread of an ASP.Net application.
                 // One way to address this would be to call ConfigureAwait(false) so that the execution does not attempt to resume on the original context.
@@ -58,12 +129,15 @@ namespace FlagsApi.Controllers
 
                 HttpResponseMessage response = await client.PostAsync("", byteContent);
 
+                //return Ok();
+
                 if (response.IsSuccessStatusCode)
                 {
-                    var result = JsonConvert.DeserializeObject<RootObject>(await response.Content.ReadAsStringAsync());
-                    
-                    Console.WriteLine("Result: {0}", result);
-                    return Ok(result.Results.output1.value.Values[0].GetRange(13,9));
+                    var result = await response.Content.ReadAsStringAsync();
+                    var predictionOutput = PredictionOutput.FromJson(result);
+
+                    Console.WriteLine("Result: {0}", predictionOutput);
+                    return Ok(predictionOutput.Results.Output1[0].Values.ToList().GetRange(19, 9));
                 }
                 else
                 {
