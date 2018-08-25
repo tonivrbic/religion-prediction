@@ -20,7 +20,8 @@ import {
   MatCheckboxModule,
   MatSelectModule,
   MatDialogModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatTooltipModule
 } from '@angular/material';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -65,6 +66,7 @@ import { UnauthorizedInterceptor } from './auth/unauthorized.interceptor';
     MatButtonModule,
     MatSnackBarModule,
     MatSidenavModule,
+    MatTooltipModule,
     MatIconModule,
     MatListModule,
     MatCardModule,
