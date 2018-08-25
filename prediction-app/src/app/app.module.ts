@@ -18,7 +18,8 @@ import {
   MatTabsModule,
   MatMenuModule,
   MatCheckboxModule,
-  MatSelectModule
+  MatSelectModule,
+  MatDialogModule
 } from '@angular/material';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -31,6 +32,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { StatsComponent } from './stats/stats.component';
 import { PredictComponent } from './predict/predict.component';
+import { BarchartComponent } from './barchart/barchart.component';
+import { PredictionDialogComponent } from './prediction-dialog/prediction-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +41,9 @@ import { PredictComponent } from './predict/predict.component';
     HomeComponent,
     LoginComponent,
     StatsComponent,
-    PredictComponent
+    PredictComponent,
+    BarchartComponent,
+    PredictionDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +57,7 @@ import { PredictComponent } from './predict/predict.component';
     MatInputModule,
     MatCheckboxModule,
     MatSelectModule,
+    MatDialogModule,
     MatTabsModule,
     MatToolbarModule,
     MatButtonModule,
@@ -65,6 +71,7 @@ import { PredictComponent } from './predict/predict.component';
     RouterModule
   ],
   providers: [],
+  entryComponents: [PredictionDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FlagsService } from '../flags.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material';
+import { PredictionDialogComponent } from '../prediction-dialog/prediction-dialog.component';
 
 @Component({
   selector: 'app-predict',
@@ -9,6 +11,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class PredictComponent implements OnInit {
   name = '';
+  predictionResult = null;
   public barChartData: any[] = [{ data: [40, 60, 36, 8, 4, 27, 15, 4] }];
   data: { value: any; label: any }[];
   religions = [
@@ -37,7 +40,7 @@ export class PredictComponent implements OnInit {
     'sunstars'
   ];
   checkboxFeatures = ['crescent', 'triangle', 'icon', 'animate', 'text'];
-  constructor(private flagService: FlagsService) {}
+  constructor(private flagService: FlagsService, private dialog: MatDialog) {}
   formGroup: FormGroup;
   ngOnInit() {
     this.formGroup = new FormGroup({
@@ -85,16 +88,28 @@ export class PredictComponent implements OnInit {
     this.flagService
       .detectReligion(this.name, prediction)
       .subscribe((data: any[]) => {
-        console.log(data);
-        const clone = [...this.barChartData];
-        clone[0].data = data.slice(0, 8).map(v => v * 100);
-        this.barChartData = clone;
-        this.data = data.slice(0, 8).map((v, i) => {
-          return {
-            value: v,
-            label: this.religions[i]
-          };
-        });
+        // console.log(data);
+        // const clone = [...this.barChartData];
+        // clone[0].data = data.slice(0, 8).map(v => v * 100);
+        // this.barChartData = clone;
+        // this.data = data.slice(0, 8).map((v, i) => {
+        //   return {
+        //     value: v,
+        //     label: this.religions[i]
+        //   };
+        // });
+        this.dialog
+          .open(PredictionDialogComponent, {
+            data: data,
+            width: '80%'
+          })
+          .afterClosed()
+          .subscribe(result => {
+            if (result === true) {
+              // save prediction
+            }
+          });
+        // this.predictionResult = data;
       });
   }
 }

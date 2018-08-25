@@ -1,0 +1,10 @@
+<div mat-dialog-title class="header">
+  Prediction result
+</div>
+<div mat-dialog-content class="content">
+  <app-barchart [data]="data"></app-barchart>
+</div>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="false">Close</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="true">Save</button>
+</mat-dialog-actions>
