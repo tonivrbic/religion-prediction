@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FlagsService } from '../flags.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material';
-import { PredictionDialogComponent } from '../prediction-dialog/prediction-dialog.component';
+import { Component, OnInit } from "@angular/core";
+import { FlagsService } from "../services/flags.service";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { MatDialog, MatSnackBar } from "@angular/material";
+import { PredictionDialogComponent } from "../prediction-dialog/prediction-dialog.component";
+import { PredictionService } from "../services/prediction.service";
 
 @Component({
   selector: 'app-predict',
@@ -40,8 +41,15 @@ export class PredictComponent implements OnInit {
     'sunstars'
   ];
   checkboxFeatures = ['crescent', 'triangle', 'icon', 'animate', 'text'];
-  constructor(private flagService: FlagsService, private dialog: MatDialog) {}
   formGroup: FormGroup;
+
+  constructor(
+    private flagService: FlagsService,
+    private predictionService: PredictionService,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
+  ) {}
+
   ngOnInit() {
     this.formGroup = new FormGroup({
       mainhue: new FormControl('', Validators.required),
@@ -85,31 +93,33 @@ export class PredictComponent implements OnInit {
         }
       }
     }
-    this.flagService
-      .detectReligion(this.name, prediction)
-      .subscribe((data: any[]) => {
-        // console.log(data);
-        // const clone = [...this.barChartData];
-        // clone[0].data = data.slice(0, 8).map(v => v * 100);
-        // this.barChartData = clone;
-        // this.data = data.slice(0, 8).map((v, i) => {
-        //   return {
-        //     value: v,
-        //     label: this.religions[i]
-        //   };
-        // });
+    this.flagService.detectReligion(this.name, prediction).subscribe(
+      (data: any[]) => {
         this.dialog
           .open(PredictionDialogComponent, {
             data: data,
-            width: '80%'
+            maxWidth: '60em',
+            width: '95%'
           })
           .afterClosed()
           .subscribe(result => {
             if (result === true) {
-              // save prediction
+              this.predictionService
+                .savePrediction({
+                  userId: 'sss',
+                  name: this.name,
+                  inputJson: JSON.stringify(this.formGroup.value),
+                  outputJson: JSON.stringify(data)
+                })
+                .subscribe(console.log);
             }
           });
-        // this.predictionResult = data;
-      });
+      },
+      _error => {
+        this.snackBar.open(
+          'An error occurred! Please check that all fields are filled out correctly.'
+        );
+      }
+    );
   }
 }

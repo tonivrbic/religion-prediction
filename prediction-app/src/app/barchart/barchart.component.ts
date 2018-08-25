@@ -17,7 +17,17 @@ export class BarchartComponent implements OnInit, OnChanges {
 
   public barChartOptions: any = {
     scaleShowVerticalLines: false,
-    responsive: true
+    responsive: true,
+    scales: {
+      yAxes: [
+        {
+          scaleLabel: {
+            display: true,
+            labelString: '% of prediction confidence'
+          }
+        }
+      ]
+    }
   };
   public barChartLabels: string[] = [
     'Catholic',
@@ -42,7 +52,8 @@ export class BarchartComponent implements OnInit, OnChanges {
         '#8e24aa',
         '#e53935',
         '#b0bec5'
-      ]
+      ],
+      borderColor: ['#333333']
     }
   ];
   public barChartData: any[] = [{ data: [40, 60, 36, 8, 4, 27, 15, 4] }];

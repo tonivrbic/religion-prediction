@@ -20,12 +20,12 @@ const routes: Routes = [
   },
   {
     component: HomeComponent,
-    path: 'home'
+    path: 'my-predictions'
+  },
+  {
+    path: '**',
+    redirectTo: 'predict'
   }
-  // {
-  //   path: '**',
-  //   redirectTo: 'home'
-  // }
 ];
 
 @NgModule({

@@ -19,10 +19,11 @@ import {
   MatMenuModule,
   MatCheckboxModule,
   MatSelectModule,
-  MatDialogModule
+  MatDialogModule,
+  MatSnackBarModule
 } from '@angular/material';
 import { HomeComponent } from './home/home.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ChartsModule } from 'ng2-charts';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
@@ -34,6 +35,7 @@ import { StatsComponent } from './stats/stats.component';
 import { PredictComponent } from './predict/predict.component';
 import { BarchartComponent } from './barchart/barchart.component';
 import { PredictionDialogComponent } from './prediction-dialog/prediction-dialog.component';
+import { UnauthorizedInterceptor } from './auth/unauthorized.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,6 +63,7 @@ import { PredictionDialogComponent } from './prediction-dialog/prediction-dialog
     MatTabsModule,
     MatToolbarModule,
     MatButtonModule,
+    MatSnackBarModule,
     MatSidenavModule,
     MatIconModule,
     MatListModule,
@@ -70,7 +73,13 @@ import { PredictionDialogComponent } from './prediction-dialog/prediction-dialog
     AngularFireAuthModule,
     RouterModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UnauthorizedInterceptor,
+      multi: true
+    }
+  ],
   entryComponents: [PredictionDialogComponent],
   bootstrap: [AppComponent]
 })

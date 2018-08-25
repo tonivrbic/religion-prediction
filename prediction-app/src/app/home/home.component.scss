@@ -1,0 +1,17 @@
+.card {
+  width: 30em;
+  margin: 1em;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+@media (max-width: 40em) {
+  .card {
+    width: 95%;
+    margin: 2%;
+  }
+}

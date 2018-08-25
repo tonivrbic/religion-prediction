@@ -1,1 +1,26 @@
-<h1>home</h1>
+<mat-card>
+  <h1>My predictions</h1>
+  <div class="cards-container">
+    <mat-card *ngFor="let prediction of predictions$ | async" class="card">
+      <mat-card-header>
+        <mat-card-title>
+          <h3>
+            {{prediction.name}}
+          </h3>
+        </mat-card-title>
+        <mat-card-subtitle>
+          Created on {{prediction.creationDate | date:'medium'}}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <app-barchart [data]="prediction.output"></app-barchart>
+      </mat-card-content>
+      <!-- <mat-card-actions align="end">
+        <button mat-icon-button
+          (click)="deletePrediction(prediction.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-actions> -->
+    </mat-card>
+  </div>
+</mat-card>

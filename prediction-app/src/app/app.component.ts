@@ -16,19 +16,19 @@ export class AppComponent {
 
   navLinks = [
     {
+      label: 'Predict',
+      path: 'predict',
+      icon: 'remove_red_eye'
+    },
+    {
       label: 'My predictions',
-      path: 'home',
+      path: 'my-predictions',
       icon: 'person'
     },
     {
       label: 'Statistics',
       path: 'stats',
       icon: 'bar_chart'
-    },
-    {
-      label: 'Predict',
-      path: 'predict',
-      icon: 'remove_red_eye'
     }
   ];
 
@@ -56,9 +56,5 @@ export class AppComponent {
 
   isRouteActive(route: string) {
     return this.router.isActive(route, true);
-  }
-
-  goBack() {
-    history.back();
   }
 }
