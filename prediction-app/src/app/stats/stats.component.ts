@@ -30,7 +30,7 @@ export class StatsComponent implements OnInit {
     'Muslim',
     'Buddhist',
     'Hindu',
-    'Ethic',
+    'Ethnic',
     'Marxist',
     'Other'
   ];
@@ -76,7 +76,7 @@ export class StatsComponent implements OnInit {
         '#00ff00',
         '#0000ff',
         '#ffd700',
-        '#ffffff',
+        '#cccccc',
         '#000000',
         '#ffa500'
       ]
@@ -91,7 +91,7 @@ export class StatsComponent implements OnInit {
         '#00ff00',
         '#ffa500',
         '#ff0000',
-        '#ffffff'
+        '#cccccc'
       ]
     }
   ];

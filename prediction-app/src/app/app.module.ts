@@ -37,6 +37,7 @@ import { PredictComponent } from './predict/predict.component';
 import { BarchartComponent } from './barchart/barchart.component';
 import { PredictionDialogComponent } from './prediction-dialog/prediction-dialog.component';
 import { UnauthorizedInterceptor } from './auth/unauthorized.interceptor';
+import { AboutComponent } from './about/about.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,8 @@ import { UnauthorizedInterceptor } from './auth/unauthorized.interceptor';
     StatsComponent,
     PredictComponent,
     BarchartComponent,
-    PredictionDialogComponent
+    PredictionDialogComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

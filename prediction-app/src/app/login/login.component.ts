@@ -29,14 +29,6 @@ export class LoginComponent {
       });
   }
 
-  loginWithFacebook() {
-    this.afAuth.auth
-      .signInWithPopup(new firebase.auth.FacebookAuthProvider())
-      .catch(err => {
-        this.loginErrorMessage = err.message;
-      });
-  }
-
   loginAccount(email: string, password: string) {
     this.afAuth.auth.signInWithEmailAndPassword(email, password).catch(err => {
       this.loginErrorMessage = err.message;

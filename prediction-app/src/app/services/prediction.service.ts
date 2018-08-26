@@ -6,7 +6,8 @@ import { Prediction } from '../prediction.model';
   providedIn: 'root'
 })
 export class PredictionService {
-  url = 'https://localhost:44303/api/UserPredictions';
+  url = 'https://religion-prediction.azurewebsites.net/api/UserPredictions';
+  // url = 'https://localhost:44303/api/UserPredictions';
   constructor(private http: HttpClient) {}
 
   getAll() {

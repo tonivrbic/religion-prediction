@@ -41,9 +41,7 @@ export class AppComponent {
         this.isLoggedIn = false;
       } else {
         console.log('Successfully Logged in.');
-        auth.getIdToken().then(token => {
-          console.log(token);
-        });
+        auth.getIdToken().then(token => {});
         this.isLoggedIn = true;
         this.router.navigate(['']);
       }

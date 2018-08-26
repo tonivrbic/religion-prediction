@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { StatsComponent } from './stats/stats.component';
 import { PredictComponent } from './predict/predict.component';
+import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     component: HomeComponent,
     path: 'my-predictions'
+  },
+  {
+    component: AboutComponent,
+    path: 'about'
   },
   {
     path: '**',

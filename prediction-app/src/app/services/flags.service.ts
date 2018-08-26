@@ -10,7 +10,7 @@ export class FlagsService {
   detectReligion(name: string, prediction: any) {
     console.log(prediction);
     return this.http.post(
-      `https://localhost:44303/api/Flags?name=${name}`,
+      `https://religion-prediction.azurewebsites.net/api/Flags?name=${name}`,
       prediction
     );
   }

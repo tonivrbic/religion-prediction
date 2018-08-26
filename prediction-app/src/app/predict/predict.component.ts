@@ -1,9 +1,9 @@
-import { Component, OnInit } from "@angular/core";
-import { FlagsService } from "../services/flags.service";
-import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { MatDialog, MatSnackBar } from "@angular/material";
-import { PredictionDialogComponent } from "../prediction-dialog/prediction-dialog.component";
-import { PredictionService } from "../services/prediction.service";
+import { Component, OnInit } from '@angular/core';
+import { FlagsService } from '../services/flags.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatDialog, MatSnackBar } from '@angular/material';
+import { PredictionDialogComponent } from '../prediction-dialog/prediction-dialog.component';
+import { PredictionService } from '../services/prediction.service';
 
 @Component({
   selector: 'app-predict',

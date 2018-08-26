@@ -35,7 +35,7 @@ export class BarchartComponent implements OnInit, OnChanges {
     'Muslim',
     'Buddhist',
     'Hindu',
-    'Ethic',
+    'Ethnic',
     'Marxist',
     'Other'
   ];
