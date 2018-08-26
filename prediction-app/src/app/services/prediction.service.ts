@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Prediction } from '../prediction.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PredictionService {
-  url = 'https://religion-prediction.azurewebsites.net/api/UserPredictions';
-  // url = 'https://localhost:44303/api/UserPredictions';
+  url = `${environment.apiUrl}api/UserPredictions`;
+
   constructor(private http: HttpClient) {}
 
   getAll() {

@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  apiUrl: 'https://localhost:44303/',
   firebase: {
     apiKey: 'AIzaSyAZqd6eoMPZAE7lPHV58g8JdPCqwMCVkRU',
     authDomain: 'religion-prediction.firebaseapp.com',
