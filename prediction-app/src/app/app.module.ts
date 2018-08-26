@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavComponent } from './sidenav/sidenav.component';
-import { LayoutModule } from '@angular/cdk/layout';
 import {
   MatToolbarModule,
   MatButtonModule,
@@ -38,6 +37,7 @@ import { BarchartComponent } from './barchart/barchart.component';
 import { PredictionDialogComponent } from './prediction-dialog/prediction-dialog.component';
 import { UnauthorizedInterceptor } from './auth/unauthorized.interceptor';
 import { AboutComponent } from './about/about.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +56,6 @@ import { AboutComponent } from './about/about.component';
     BrowserAnimationsModule,
     HttpClientModule,
     ChartsModule,
-    LayoutModule,
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,

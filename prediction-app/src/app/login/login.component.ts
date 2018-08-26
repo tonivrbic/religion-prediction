@@ -13,8 +13,8 @@ export class LoginComponent {
   registerEmail: string;
   registerPassword: string;
   registerErrorMessage: string;
-  loginEmail: string;
-  loginPassword: string;
+  loginEmail = 'demo@example.com';
+  loginPassword = 'Demo1234';
   loginErrorMessage: string;
 
   constructor(public afAuth: AngularFireAuth) {
